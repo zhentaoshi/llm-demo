@@ -1,6 +1,5 @@
-# LLM Ollama OpenClaw Image
+# LLM Image
 
-TTTTTESTTTTT
 
 This project builds a Docker image on top of `ollama/ollama:0.18.0` with:
 
@@ -12,39 +11,13 @@ This project builds a Docker image on top of `ollama/ollama:0.18.0` with:
 ## Build
 
 ```
-docker build -t llm-ollama-openclaw:test .
+docker build -t llmdemo:v1.0 .
 ```
 
 ## Run
 
-```powershell
-docker run -d --name llm-ollama-openclaw -p 11434:11434 llm-ollama-openclaw:test
+```
+docker run -d --name llmdemo -p 11434:11434 llmdemo:v1.0
 ```
 
 The container starts with Ollama serving on port `11434`.
-
-## Verify
-
-Check the installed tools:
-
-```powershell
-docker exec llm-ollama-openclaw bash -lc "opencode --version && openclaw --version"
-```
-
-Check the default OpenClaw model:
-
-```powershell
-docker exec llm-ollama-openclaw bash -lc "openclaw config get agents.defaults.model.primary"
-```
-
-Check the bundled Ollama model:
-
-```powershell
-docker exec llm-ollama-openclaw bash -lc "ollama list"
-```
-
-## Stop And Remove
-
-```powershell
-docker rm -f llm-ollama-openclaw
-```

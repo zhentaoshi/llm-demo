@@ -1,4 +1,5 @@
 FROM ollama/ollama:0.18.0
+# starting images
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -6,7 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/root
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates curl git gnupg \
+    && apt-get install -y --no-install-recommends ca-certificates curl git gnupg \ 
+    # install curl and git
     && mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
         | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
@@ -14,7 +16,8 @@ RUN apt-get update \
         > /etc/apt/sources.list.d/nodesource.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends nodejs \
-    && npm install -g opencode-ai openclaw \
+    && npm install -g opencode-ai openclaw \ 
+    # install opencode and openclaw
     && npm cache clean --force \
     && apt-get purge -y --auto-remove gnupg \
     && rm -rf /var/lib/apt/lists/*
@@ -28,7 +31,8 @@ RUN export OLLAMA_HOST=127.0.0.1:11434 \
         fi; \
         sleep 1; \
     done \
-    && ollama pull qwen3.5:0.8b \
+    && ollama pull qwen3.5:0.8b \ 
+    # specify the LLM models
     && kill "${pid}" \
     && wait "${pid}" || true
 

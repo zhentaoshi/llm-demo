@@ -1,0 +1,23 @@
+{
+  "image": "ztshi/llmdemo:v0.1",
+//  "containerUser": "root", // give root permission
+//  "remoteUser": "root", // log in as roots
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "",
+  "postCreateCommand": "",
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    },
+    "vscode": {
+      "extensions": [
+        "ms-toolsai.jupyter",
+        "ms-python.python",
+        "shd101wyy.markdown-preview-enhanced"
+      ]
+    }
+  }
+}
